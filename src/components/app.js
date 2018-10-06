@@ -1,58 +1,25 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
-import Counter from '../containers/counter';
-import Controls from '../containers/controls';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
+import NavBar from '../components/navBar';
 
-const About = (props) => {
-  return <div> All there is to know about me </div>;
-};
-
-const Welcome = (props) => {
-  return (
-    <div>
-      <Counter />
-      <Controls />
-    </div>
-  );
-};
-
-const Test = (props) => {
-  return <div> ID: {props.match.params.id} </div>;
-};
-
-const FallBack = (props) => {
-  return <div>URL Not Found</div>;
-};
+import EventEditor from '../containers/createEvent';
 
 const App = (props) => {
   return (
     <Router>
       <div>
-        <Nav />
+        <NavBar />
+        <hr />
         <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route path="/about" component={About} />
-          <Route exact path="/test/:id" component={Test} />
-          <Route component={FallBack} />
+          <Route exact path="/create" component={EventEditor} />
+          <Route render={() => (<div>No posts found </div>)} />
         </Switch>
       </div>
     </Router>
+
   );
 };
-
-const Nav = (props) => {
-  return (
-    <nav>
-      <ul>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/test/id1">test id1</NavLink></li>
-        <li><NavLink to="/test/id2">test id2</NavLink></li>
-      </ul>
-    </nav>
-  );
-};
-
 
 export default App;
