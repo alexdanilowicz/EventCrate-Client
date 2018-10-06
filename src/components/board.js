@@ -60,7 +60,7 @@ class Board extends Component {
     for (let i = 0; i < DAY_INTERVAL; i += 1) {
       const title = `${weekday[i % 7]}, ${d.getMonth() + 1}/${d.getDate()}`;
       cols.push(title);
-      keys.push(`${d.getMonth() + 1}/${d.getDate()}`);
+      keys.push(this.getDateKey(d));
       d.setDate(d.getDate() + 1);
     }
 
