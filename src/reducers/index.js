@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import UserReducer from './userReducer';
 import ReviewReducer from './reviewReducer';
+import EventsReducer from './eventsReducer';
 
 const rootReducer = combineReducers({
-  user: UserReducer,
+  events: EventsReducer,
   review: ReviewReducer,
 });
 

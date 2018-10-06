@@ -13,6 +13,7 @@ const App = (props) => {
       <div>
         <Nav />
         <Switch>
+          <Route exact path="/" component={Board} />
           <Route exact path="/create" component={EventEditor} />
           <Route exact path="/review" component={ReviewQueue} />
           <Route render={() => (<div>No posts found </div>)} />
