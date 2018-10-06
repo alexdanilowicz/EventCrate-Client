@@ -1,3 +1,7 @@
+.board-container {
+  height: 100%;
+}
+
 .board {
   display: flex;
   flex-direction: row;
@@ -23,6 +27,16 @@
 // .board-column:hover {
 //   overflow-y: scroll;
 // }
+
+#backward , #forward {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 4px;
+}
+
+#forward {
+  float: right;
+}
 
 .column-title {
 

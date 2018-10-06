@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Button, Icon } from 'semantic-ui-react';
 
 import BoardColumn from '../components/boardColumn';
 
@@ -16,6 +17,7 @@ class Board extends Component {
 
     this.state = {
       curDate: d,
+      dayIndex: d.getDay(),
     };
 
     this.renderColumns = this.renderColumns.bind(this);
@@ -37,9 +39,13 @@ class Board extends Component {
   }
 
   goBackward() {
+    const newTime = new Date(this.state.curDate.getTime());
+    newTime.setDate(newTime.getDate() - DAY_INTERVAL);
     this.setState({
-      curDate: this.state.curDate.getDate() - DAY_INTERVAL,
+      curDate: newTime,
+      dayIndex: this.state.dayIndex - DAY_INTERVAL,
     });
+
     this.props.fetchEvents(this.getDateKey(this.state.curDate));
   }
 
@@ -48,22 +54,23 @@ class Board extends Component {
     newTime.setDate(newTime.getDate() + DAY_INTERVAL);
     this.setState({
       curDate: newTime,
+      dayIndex: this.state.dayIndex + DAY_INTERVAL,
     });
+
     this.props.fetchEvents(this.getDateKey(this.state.curDate));
   }
 
   renderColumns() {
-    const d = new Date(this.state.curDate.getTime());
-
     const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     const cols = [];
-    const keys = [];
+    // const keys = [];
+
+    const keys = Object.keys(this.props.events);
+
     for (let i = 0; i < DAY_INTERVAL; i += 1) {
-      const title = `${weekday[i % 7]}, ${d.getMonth() + 1}/${d.getDate()}`;
+      const title = `${weekday[(this.state.dayIndex + i) % 7]}, ${keys[i]}`;
       cols.push(title);
-      keys.push(this.getDateKey(d));
-      d.setDate(d.getDate() + 1);
     }
 
     return cols.map((c, i) => (
@@ -79,8 +86,12 @@ class Board extends Component {
     }
 
     return (
-      <div className="board">
-        {this.renderColumns()}
+      <div className="board-container">
+        <Button onClick={this.goBackward} id="backward" className="ui-button backward"> <Icon name="arrow left" size="large" /> </Button>
+        <Button onClick={this.goForward} id="forward" className="ui-button forward"> <Icon name="arrow right" size="large" /> </Button>
+        <div className="board">
+          {this.renderColumns()}
+        </div>
       </div>
     );
   }
