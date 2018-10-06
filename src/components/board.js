@@ -38,14 +38,16 @@ class Board extends Component {
 
   goBackward() {
     this.setState({
-      curDate: this.state.d - DAY_INTERVAL,
+      curDate: this.state.curDate.getDate() - DAY_INTERVAL,
     });
     this.props.fetchEvents(this.getDateKey(this.state.curDate));
   }
 
   goForward() {
+    const newTime = new Date(this.state.curDate.getTime());
+    newTime.setDate(newTime.getDate() + DAY_INTERVAL);
     this.setState({
-      curDate: this.state.d + DAY_INTERVAL,
+      curDate: newTime,
     });
     this.props.fetchEvents(this.getDateKey(this.state.curDate));
   }
