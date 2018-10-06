@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button, Card, Divider, Statistic } from 'semantic-ui-react';
-
 import { getReviewEvents, approveEvent, declineEvent } from '../actions';
 
 class ReviewQueue extends Component {
@@ -43,6 +42,7 @@ class ReviewQueue extends Component {
 
 
     const vals = [name, clubName, startTime, endTime, location, description];
+
     const profanities = ['fuck', 'shit', 'stupid', 'hell', 'ass'];
 
     let proCount = 0;
@@ -77,6 +77,14 @@ class ReviewQueue extends Component {
       charCountColor = 'red';
     }
 
+    const clubApproved = Math.floor(Math.random() * 11);
+    let clubColor = 'red';
+    if (clubApproved > 6) {
+      clubColor = 'green';
+    } else if (clubApproved > 2) {
+      clubColor = 'orange';
+    }
+
     return (
       <Statistic.Group horizontal>
         <Statistic color={proColor}>
@@ -87,6 +95,11 @@ class ReviewQueue extends Component {
         <Statistic color={charCountColor}>
           <Statistic.Value>{totalCharCount}</Statistic.Value>
           <Statistic.Label>Total Characters</Statistic.Label>
+        </Statistic>
+        <Divider />
+        <Statistic color={clubColor}>
+          <Statistic.Value>{clubApproved}</Statistic.Value>
+          <Statistic.Label>Previously Club Approved Posts</Statistic.Label>
         </Statistic>
       </Statistic.Group>
     );

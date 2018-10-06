@@ -66,9 +66,6 @@ class Board extends Component {
       d.setDate(d.getDate() + 1);
     }
 
-    console.log(this.props.events);
-    console.log(keys);
-
     return cols.map((c, i) => (
       <BoardColumn key={c} title={c} events={this.props.events[keys[i]]} />
     ));
