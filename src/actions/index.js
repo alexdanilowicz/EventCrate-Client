@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const ROOT_URL = 'localhost:9000/api';
+const ROOT_URL = 'http://localhost:9000/api';
 
 export const ActionTypes = {
   FETCH_EVENTS: 'FETCH_EVENTS',
@@ -43,15 +43,12 @@ const TEST_DATA = [
 
 export function fetchEvents() {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/approved`).then((response) => {
+    axios.get(`${ROOT_URL}/approved`).then((response) => {
       dispatch({ type: ActionTypes.FETCH_EVENTS, payload: response.data });
     }).catch((error) => {
       toast.error('There was an issue communicating with our server');
       console.log(error);
     });
-    // setTimeout(() => {
-    //   dispatch({ type: ActionTypes.FETCH_EVENTS, payload: TEST_DATA });
-    // }, 2000);
   };
 }
 
@@ -74,53 +71,6 @@ export function getReviewEvents() {
     }).catch((error) => {
       console.log(error);
     });
-
-    // const template =
-    // {
-    //   name: '',
-    //   clubName: '',
-    //   description: '',
-    //   location: '',
-    //   startTime: '',
-    //   endTime: '',
-    //   date: '',
-    //   id: '',
-    // };
-    // const response = [
-    //   {
-    //     name: 'test1',
-    //     clubName: 'test2',
-    //     description: 'test3',
-    //     location: 'test4',
-    //     startTime: 'test5',
-    //     endTime: 'test6',
-    //     date: 'test7',
-    //     id: 'test8',
-    //   },
-    //   {
-    //     name: 'test1',
-    //     clubName: 'test1',
-    //     description: 'test1',
-    //     location: 'test1',
-    //     startTime: 'test1',
-    //     endTime: 'test1',
-    //     date: 'test1',
-    //     id: 'test1',
-    //   },
-    //   {
-    //     name: 'test2',
-    //     clubName: 'test2',
-    //     description: 'test2',
-    //     location: 'test2',
-    //     startTime: 'test2',
-    //     endTime: 'test2',
-    //     date: 'test2',
-    //     id: 'test2',
-    //   },
-    // ];
-    // setTimeout(() => {
-    //   dispatch({ type: ActionTypes.REVIEW_EVENT, payload: response });
-    // }, 2000);
   };
 }
 
