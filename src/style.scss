@@ -17,6 +17,16 @@ body, html {
   flex-direction: column;
 }
 
+.review-panel {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.review-metrics {
+  margin: 20px;
+}
+
 .review-queue {
   margin: 20px;
 }

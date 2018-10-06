@@ -90,7 +90,7 @@ export function approveEvent(id) {
 
 export function declineEvent(id) {
   return (dispatch) => {
-    axios.put(`${ROOT_URL}/decline${id}`).then((response) => {
+    axios.put(`${ROOT_URL}/decline/${id}`).then((response) => {
       toast.success('Declined event');
     }).catch((error) => {
       toast.error('Something went wrong!');
