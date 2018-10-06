@@ -1,24 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
-import Counter from '../containers/counter';
-import Controls from '../containers/controls';
+import { Menu } from 'semantic-ui-react';
+import Board from '../components/board';
+import logo from '../img/logo-HOME.png';
 
+const Submit = (props) => {
+  return <div> submit </div>;
+};
 
-const About = (props) => {
-  return <div> All there is to know about me </div>;
+const Review = (props) => {
+  return <div> review </div>;
 };
 
 const Welcome = (props) => {
   return (
     <div>
-      <Counter />
-      <Controls />
+      <Board />
     </div>
   );
-};
-
-const Test = (props) => {
-  return <div> ID: {props.match.params.id} </div>;
 };
 
 const FallBack = (props) => {
@@ -32,8 +31,8 @@ const App = (props) => {
         <Nav />
         <Switch>
           <Route exact path="/" component={Welcome} />
-          <Route path="/about" component={About} />
-          <Route exact path="/test/:id" component={Test} />
+          <Route path="/submit" component={Submit} />
+          <Route path="/review" component={Review} />
           <Route component={FallBack} />
         </Switch>
       </div>
@@ -43,14 +42,39 @@ const App = (props) => {
 
 const Nav = (props) => {
   return (
-    <nav>
-      <ul>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
-        <li><NavLink to="/test/id1">test id1</NavLink></li>
-        <li><NavLink to="/test/id2">test id2</NavLink></li>
-      </ul>
-    </nav>
+    <Menu stackable>
+      <Menu.Item>
+        <img src={logo} alt="logo" />
+      </Menu.Item>
+
+      <Menu.Item
+        name="Browse"
+        as={NavLink}
+        exact
+        to="/"
+      >
+            Browse
+      </Menu.Item>
+
+      <Menu.Item
+        name="Submit"
+        as={NavLink}
+        exact
+        to="/submit"
+      >
+            Submit
+      </Menu.Item>
+
+      <Menu.Item
+        name="Review"
+        as={NavLink}
+        exact
+        to="/review"
+      >
+            Review
+
+      </Menu.Item>
+    </Menu>
   );
 };
 
