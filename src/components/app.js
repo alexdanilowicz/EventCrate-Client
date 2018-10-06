@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import { Menu, Image } from 'semantic-ui-react';
-// import Board from '../components/board';
+import Board from '../components/board';
 import logo from '../img/small-words-ec-logo.png';
 
 import EventEditor from '../containers/createEvent';
