@@ -1,4 +1,4 @@
-# eventcreate
+# eventcrate
 
 ![logo](./src/img/small-words-ec-logo.png)
 
