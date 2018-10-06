@@ -11,6 +11,7 @@ class EventEditor extends Component {
     super(props);
     this.state = {
       name: '',
+      clubName: '',
       description: '',
       location: '',
       start: '',
@@ -31,6 +32,7 @@ class EventEditor extends Component {
   submit() {
     const data = {
       name: this.state.name,
+      clubName: this.state.clubName,
       description: this.state.description,
       location: this.state.location,
       start: this.state.start,
@@ -46,6 +48,8 @@ class EventEditor extends Component {
       <div className="event-editor">
         <div className="editor-title"> Name: <span className="editor-required"> * </span></div>
         <Input name="name" placeholder="Event name" onChange={this.handleChange} />
+        <div className="editor-title"> Club Name: <span className="editor-required"> * </span></div>
+        <Input name="clubName" placeholder="Club name" onChange={this.handleChange} />
         <div className="editor-title"> Description: <span className="editor-required"> * </span></div>
         <TextArea name="description" onChange={this.handleChange} autoHeight placeholder="Event description" style={{ minHeight: 100 }} />
         <div className="editor-title"> Location: <span className="editor-required"> * </span></div>
