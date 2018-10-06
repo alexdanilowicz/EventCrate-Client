@@ -8,42 +8,45 @@ export const ActionTypes = {
   REVIEW_EVENT: 'REVIEW_EVENT',
 };
 
-const TEST_DATA = [
-  {
-    name: 'test1',
-    clubName: 'test2',
-    description: 'test3',
-    location: 'test4',
-    startTime: 'test5',
-    endTime: 'test6',
-    date: 'test7',
-    id: 'test8',
-  },
-  {
-    name: 'test1',
-    clubName: 'test1',
-    description: 'test1',
-    location: 'test1',
-    startTime: 'test1',
-    endTime: 'test1',
-    date: 'test1',
-    id: 'test1',
-  },
-  {
-    name: 'test2',
-    clubName: 'test2',
-    description: 'test2',
-    location: 'test2',
-    startTime: 'test2',
-    endTime: 'test2',
-    date: 'test2',
-    id: 'test2',
-  },
-];
+// const TEST_DATA = [
+//   {
+//     name: 'test1',
+//     clubName: 'test2',
+//     description: 'test3',
+//     location: 'test4',
+//     startTime: 'test5',
+//     endTime: 'test6',
+//     date: 'test7',
+//     id: 'test8',
+//   },
+//   {
+//     name: 'test1',
+//     clubName: 'test1',
+//     description: 'test1',
+//     location: 'test1',
+//     startTime: 'test1',
+//     endTime: 'test1',
+//     date: 'test1',
+//     id: 'test1',
+//   },
+//   {
+//     name: 'test2',
+//     clubName: 'test2',
+//     description: 'test2',
+//     location: 'test2',
+//     startTime: 'test2',
+//     endTime: 'test2',
+//     date: 'test2',
+//     id: 'test2',
+//   },
+// ];
 
 export function fetchEvents(dateKey) {
+  console.log('bbbbbbbb');
+  console.log(dateKey);
   return (dispatch) => {
-    axios.get(`${ROOT_URL}/approved`, dateKey).then((response) => {
+    axios.get(`${ROOT_URL}/approved?date=${dateKey}`).then((response) => {
+      console.log(response);
       dispatch({ type: ActionTypes.FETCH_EVENTS, payload: response.data });
     }).catch((error) => {
       toast.error('There was an issue communicating with our server');

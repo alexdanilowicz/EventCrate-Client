@@ -24,13 +24,13 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchEvents(this.getDateKey());
+    this.props.fetchEvents(this.getDateKey(this.state.curDate));
   }
 
-  getDateKey() {
-    let rawDate = `${this.state.curDate.getDate()}`;
+  getDateKey = (d) => {
+    let rawDate = `${d.getDate()}`;
     rawDate = rawDate.length === 1 ? `0${rawDate}` : rawDate;
-    let rawMonth = `${this.state.curDate.getMonth() + 1}`;
+    let rawMonth = `${d.getMonth() + 1}`;
     rawMonth = rawMonth.length === 1 ? `0${rawMonth}` : rawMonth;
 
     return `${rawMonth}/${rawDate}`;
@@ -40,30 +40,35 @@ class Board extends Component {
     this.setState({
       curDate: this.state.d - DAY_INTERVAL,
     });
-    this.props.fetchEvents(this.getDateKey());
+    this.props.fetchEvents(this.getDateKey(this.state.curDate));
   }
 
   goForward() {
     this.setState({
       curDate: this.state.d + DAY_INTERVAL,
     });
-    this.props.fetchEvents(this.getDateKey());
+    this.props.fetchEvents(this.getDateKey(this.state.curDate));
   }
 
   renderColumns() {
-    const d = this.state.curDate;
+    const d = new Date(this.state.curDate.getTime());
 
     const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
     const cols = [];
+    const keys = [];
     for (let i = 0; i < DAY_INTERVAL; i += 1) {
       const title = `${weekday[i % 7]}, ${d.getMonth() + 1}/${d.getDate()}`;
       cols.push(title);
+      keys.push(`${d.getMonth() + 1}/${d.getDate()}`);
       d.setDate(d.getDate() + 1);
     }
 
-    return cols.map(c => (
-      <BoardColumn key={c} title={c} />
+    console.log(this.props.events);
+    console.log(keys);
+
+    return cols.map((c, i) => (
+      <BoardColumn key={c} title={c} events={this.props.events[keys[i]]} />
     ));
   }
 
