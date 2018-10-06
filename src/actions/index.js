@@ -41,9 +41,9 @@ const TEST_DATA = [
   },
 ];
 
-export function fetchEvents() {
+export function fetchEvents(dateKey) {
   return (dispatch) => {
-    axios.get(`${ROOT_URL}/approved`).then((response) => {
+    axios.get(`${ROOT_URL}/approved`, dateKey).then((response) => {
       dispatch({ type: ActionTypes.FETCH_EVENTS, payload: response.data });
     }).catch((error) => {
       toast.error('There was an issue communicating with our server');

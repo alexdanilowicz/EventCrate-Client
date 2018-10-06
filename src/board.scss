@@ -1,0 +1,29 @@
+.board {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.board-column {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+// .column-items {
+//   overflow-y: scroll;
+//   overflow-x: hidden;
+//   padding: 0;
+//   margin: 0;
+// }
+
+// .board-column:hover {
+//   overflow-y: scroll;
+// }
+
+.column-title {
+
+}

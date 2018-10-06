@@ -10,7 +10,7 @@ import ReviewQueue from '../containers/reviewQueue';
 const App = (props) => {
   return (
     <Router>
-      <div>
+      <div id="nav-container">
         <Nav />
         <Switch>
           <Route exact path="/" component={Board} />
