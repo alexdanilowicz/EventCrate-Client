@@ -1,17 +1,27 @@
 body, html {
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(to top, #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
+  font-family: 'Source Sans Pro', sans-serif;
   height: 100%;
 }
 
-.logo {
-  background-image: url('img/MYIMPAGE.jpg');
-  width: 100px;
-  height: 100px;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
+.event-editor {
+  padding: 20px;
+  width: 500px;
 
-.active {
-  color: pink;
+  .editor-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .editor-required {
+    color: red;
+  }
+
+  textarea {
+    width: 400px;
+  }
+
+  input {
+    height: 30px;
+    width: 400px;
+  }
 }
