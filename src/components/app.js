@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
-import Board from '../components/board';
+import { Menu, Image } from 'semantic-ui-react';
+// import Board from '../components/board';
 import logo from '../img/small-words-ec-logo.png';
 
 import EventEditor from '../containers/createEvent';
@@ -27,7 +27,7 @@ const Nav = (props) => {
   return (
     <Menu stackable>
       <Menu.Item>
-        <img src={logo} alt="logo" />
+        <Image src={logo} as={NavLink} exact to="/" size="tiny" />
       </Menu.Item>
 
       <Menu.Item

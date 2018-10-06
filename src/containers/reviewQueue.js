@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 
 import { getReviewEvents, approveEvent, declineEvent } from '../actions';
 
@@ -43,34 +43,36 @@ class ReviewQueue extends Component {
     }
     if (this.state.dispIndex >= this.props.events.length) {
       return (
-        <div> No more events to review! </div>
+        <div className="review-queue">
+          <h1>
+            No more events to review.
+            <span>&nbsp;&nbsp;</span>
+          </h1>
+        </div>
       );
     }
     const e = this.props.events[this.state.dispIndex];
     return (
       <div className="review-queue">
+        <h1 className="ui header">
+          Review Events
+          <div className="sub header">{this.state.dispIndex} out of {this.props.events.length} reviewed </div>
+        </h1>
+
         <div className="review-event">
-          <div className="review-ele"> Event Name: </div>
-          <div className="review-res"> {e.name} </div>
-
-          <div className="review-ele"> Club Name: </div>
-          <div className="review-res"> {e.clubName} </div>
-
-          <div className="review-ele"> Description: </div>
-          <div className="review-res"> {e.description} </div>
-
-          <div className="review-ele"> Location </div>
-          <div className="review-res"> {e.location} </div>
-
-          <div className="review-ele"> Start time: </div>
-          <div className="review-res"> {e.startTime} </div>
-
-          <div className="review-ele"> End time: </div>
-          <div className="review-res"> {e.endTime} </div>
-
-          <div className="review-ele"> Date: </div>
-          <div className="review-res"> {e.date} </div>
+          <Card>
+            <Card.Content>
+              <Card.Header> {e.name} </Card.Header>
+              <Card.Meta><strong>{e.clubName} </strong></Card.Meta>
+              <Card.Meta>{e.startTime} -  {e.endTime}</Card.Meta>
+              <Card.Description>{e.location}</Card.Description>
+            </Card.Content>
+            <Card.Content extra>
+              {e.description}
+            </Card.Content>
+          </Card>
           <div />
+
           <div className="review-metrics">
             <Button.Group>
               <Button positive onClick={this.handleApprove}> Approve </Button>
@@ -83,6 +85,7 @@ class ReviewQueue extends Component {
     );
   }
 }
+
 
 const mapStateToProps = state => (
   {
