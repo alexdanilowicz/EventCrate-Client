@@ -27,17 +27,17 @@ export function getReviewEvents() {
     //   console.log(error);
     // });
 
-    const template =
-    {
-      name: '',
-      clubName: '',
-      description: '',
-      location: '',
-      startTime: '',
-      endTime: '',
-      date: '',
-      id: '',
-    };
+    // const template =
+    // {
+    //   name: '',
+    //   clubName: '',
+    //   description: '',
+    //   location: '',
+    //   startTime: '',
+    //   endTime: '',
+    //   date: '',
+    //   id: '',
+    // };
     const response = [
       {
         name: 'test1',

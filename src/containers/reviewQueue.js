@@ -36,13 +36,12 @@ class ReviewQueue extends Component {
   }
 
   render() {
-    console.log(this.props.events);
     if (!this.props.events) {
       return (
         <div> Loading events... </div>
       );
     }
-    if (this.state.dispIndex > this.props.events.length) {
+    if (this.state.dispIndex >= this.props.events.length) {
       return (
         <div> No more events to review! </div>
       );
