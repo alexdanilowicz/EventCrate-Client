@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import Board from '../components/board';
-import logo from '../img/logo-HOME.png';
+import logo from '../img/small-words-ec-logo.png';
 
 import EventEditor from '../containers/createEvent';
 import ReviewQueue from '../containers/reviewQueue';
