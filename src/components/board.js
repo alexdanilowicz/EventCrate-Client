@@ -33,7 +33,7 @@ class Board extends Component {
   getDateKey() {
     let rawDate = `${this.state.curDate.getDate()}`;
     rawDate = rawDate.length === 1 ? `0${rawDate}` : rawDate;
-    let rawMonth = `${this.state.curDate.getMonth()}`;
+    let rawMonth = `${this.state.curDate.getMonth() + 1}`;
     rawMonth = rawMonth.length === 1 ? `0${rawMonth}` : rawMonth;
 
     return `${rawMonth}/${rawDate}`;
@@ -93,8 +93,6 @@ class Board extends Component {
         <div> Loading events... </div>
       );
     }
-
-    console.log(this.props.events);
 
     return (
       <div className="board">
