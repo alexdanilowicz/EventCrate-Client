@@ -12,6 +12,8 @@ class Board extends Component {
     super(props);
 
     this.state = {};
+
+    this.renderCards = this.renderCards.bind(this);
   }
 
   componentDidMount() {
@@ -20,7 +22,7 @@ class Board extends Component {
 
   renderCards() {
     return this.props.events.map(eventInfo => (
-      <Card.Group >
+      <Card.Group key={eventInfo.id}>
         <EventCard
           eventName={eventInfo.name}
           eventStartTime={eventInfo.startTime}
@@ -44,18 +46,7 @@ class Board extends Component {
 
     return (
       <div>
-        <Card.Group >
-          <EventCard
-            eventName="HackDay III"
-            eventStartTime="9:00 AM"
-            eventEndTime="9:00 PM"
-            eventLocation="Magnuson Center (DEN)"
-            eventClubName="Hacker Club"
-            eventContent="Meet new people and build things!"
-            eventTagColor="green"
-            eventTags="CS, Hackathon"
-          />
-        </Card.Group>
+        {this.renderCards()}
       </div>
     );
   }
