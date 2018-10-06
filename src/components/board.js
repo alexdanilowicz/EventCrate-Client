@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { Card } from 'semantic-ui-react';
-import EventCard from '../components/event-card';
 import BoardColumn from '../components/boardColumn';
 
 import { fetchEvents } from '../actions';
@@ -20,7 +18,6 @@ class Board extends Component {
       curDate: d,
     };
 
-    this.renderCards = this.renderCards.bind(this);
     this.renderColumns = this.renderColumns.bind(this);
     this.goBackward = this.goBackward.bind(this);
     this.goForward = this.goForward.bind(this);
@@ -67,23 +64,6 @@ class Board extends Component {
 
     return cols.map(c => (
       <BoardColumn key={c} title={c} />
-    ));
-  }
-
-  renderCards() {
-    return this.props.events.map(eventInfo => (
-      <Card.Group key={eventInfo.id}>
-        <EventCard
-          eventName={eventInfo.name}
-          eventStartTime={eventInfo.startTime}
-          eventEndTime={eventInfo.endTime}
-          eventLocation={eventInfo.location}
-          eventClubName={eventInfo.clubName}
-          eventContent={eventInfo.description}
-          eventTagColor="green"
-          eventTags="CS, Hackathon"
-        />
-      </Card.Group>
     ));
   }
 
